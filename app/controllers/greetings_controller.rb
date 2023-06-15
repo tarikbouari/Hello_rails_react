@@ -1,10 +1,11 @@
 class GreetingsController < ApplicationController
   def index
-    @greetings = Greeting.all
+    @greeting = Greeting.order('RANDOM()').first
+    render json: @greeting, status: :ok
+   
   end
 
   def random_greeting
-    @greeting = Greeting.order('RANDOM()').first
-    render json: @greeting, status: :ok
+    @greetings = Greeting.all
   end
 end
